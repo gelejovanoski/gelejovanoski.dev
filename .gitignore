@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+
+# environment & secrets
+.env
+.env*.local
+
+# misc
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+Thumbs.db
+npm-debug.log*

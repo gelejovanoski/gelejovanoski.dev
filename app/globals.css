@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0f1115;
+  --color-surface: #161920;
+  --color-raised: #1f232c;
+  --color-line: #262a33;
+  --color-line-strong: #343a45;
+  --color-muted: #a3a9b4;
+  --color-soft: #c9ced6;
+  --color-fg: #e8eaed;
+  --color-accent: #ffb224;
+  --color-online: #4ade80;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+/* Diagonal stripes behind projects that don't have a screenshot yet. */
+.placeholder-stripes {
+  background: repeating-linear-gradient(135deg, #1b1f27 0 12px, #181b22 12px 24px);
+}
+
+/* Scroll-reveal animation (components/Reveal.tsx). Only hidden when JS runs. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.2s ease;
+  transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
